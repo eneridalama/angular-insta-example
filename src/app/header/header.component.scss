@@ -1,0 +1,23 @@
+div.container {
+  .container-name {
+    margin: 40px;
+  }
+  img {
+    width: 10rem;
+  }
+  .personal-detail {
+    padding: 10px;
+    .name {
+      font-size: 1.65rem;
+      font-weight: bold;
+    }
+  }
+}
+
+.instaBio {
+  margin-top: 20px;
+}
+
+.btn {
+  margin-left: 50px;
+}
