@@ -12,6 +12,10 @@ export class AppComponent {
   followersName: string = 'Followers';
   postsName: string = 'Posts';
 
+  birthdayDate: string = '';
+  inputBirthdayDate = '';
+  itemBirthdayDate: string = '1/01/01';
+
   following: number = 1100;
   followers: number = 679;
   posts: number = 11; 
@@ -19,11 +23,27 @@ export class AppComponent {
   inputFirstName: string = '';
   inputLastName: string = '';
 
-  itemFirstName: string = '';
-  itemLastName: string = '';
+  itemFirstName: string = 'Default';
+  itemLastName: string = 'Name';
 
-  fName: string = 'Enerida';
-  lName: string = 'Lama';
-  uName: string = 'eneridalama';
+  fName: string = '';
+  lName: string = '';
+  
+
+  logUsername(event: any) {
+    const { firstName, lastName } = event;
+
+    this.inputFirstName = '';
+    this.inputLastName = '';
+
+    this.itemFirstName = firstName;
+    this.itemLastName = lastName;
+  }
+
+  logBirthday(event: any){
+    const birthday = event;
+    this.inputBirthdayDate = '';
+    this.itemBirthdayDate = birthday;
+  }
 
 }

@@ -1,19 +1,37 @@
-<div class="container d-flex justify-content-start align-items-center">
-    <img src="assets/images/logo.png" alt="">
-    <div class="container-name">
-        <div class="d-flex justify-content-between align-items-center personal-detail">
-            <p class="name">{{firstName}} {{lastName}} </p>
-            <input type="text" value="firstName" hidden>
-            <button type="button" class="btn btn-outline-light btn-sm">Edit</button>
-        </div>
-        <div class="d-flex justify-content-between align-items-center personal-detail">
-            <p><b>Birthday: </b> <span appHighlight>{{birthday | date}}</span> </p>
-            <button type="button" class="btn btn-outline-light btn-sm">Edit</button>
+<div class="form-group">
+    <div class="container d-flex justify-content-start align-items-center">
+        <img src="assets/images/logo.png" alt="">
+        <div class="container-name">
+            <div class="d-flex justify-content-between align-items-center personal-detail">
+                <p class="name" *ngIf="!editField">{{firstName}} {{lastName}} </p>
+                <div *ngIf="editField">
+                    <div>
+                        <label for="firstNameControl">First Name</label>
+                        <input id="firstNameControl" type="text" class="form-control" #firstNameRef>
+                    </div>
+                    <div>
+                        <label for="lastNameControl">Last Name</label>
+                        <input id="lastNameControl" type="text" class="form-control" #lastNameRef>
+                    </div>
+                </div>
+                <button type="button" class="btn btn-outline-light btn-sm"
+                    (click)="add($event)">{{editNameButton}}</button>
+
+            </div>
+            <div class="d-flex justify-content-between align-items-center personal-detail">
+                <p *ngIf="!editDateField"> Birthday: <span appHighlight>{{birthday | date}}</span> </p>
+                <div *ngIf="editDateField">
+                    <input type="date" class="form-control" id="birthdayControl" #birthdayRef>
+                    
+                </div><button type="button" class="btn btn-outline-light btn-sm"
+                        (click)="addBirthday($event)">{{editDateButton}}</button>
+            </div>
         </div>
     </div>
-</div>
-<div class="instaBio d-flex justify-content-around align-items-center">
-    <p> <b> Instagram </b><br>
-        Bringing you closer to the people and things you love.❤</p>
-    <button type="button" class="btn btn-outline-light btn-sm">Edit</button>
+    <div class="instaBio d-flex justify-content-around align-items-center">
+        <p>
+            Bringing you closer to the people and things you love.❤</p>
+        <textarea type="text" class="form-control" hidden></textarea>
+        <button type="button" class="btn btn-outline-light btn-sm">Edit</button>
+    </div>
 </div>

@@ -1,5 +1,13 @@
 <div class="container border">
-  <app-header [firstName]="fName" [lastName]="lName"></app-header>
+  <app-header [firstName]="fName" 
+  [lastName]="lName" 
+  [firstName]="itemFirstName" 
+  [lastName]="itemLastName" 
+  [birthday]="birthdayDate"
+  [birthday]="itemBirthdayDate"
+  (addedItem)="logUsername($event)"
+  (addedBirthday)="logBirthday($event)"
+  ></app-header>
   <hr>
   <div class="d-flex justify-content-around">
     <app-follow-info [title]="postsName" [followNumbers]="posts"></app-follow-info>
