@@ -21,45 +21,63 @@ interface NameSurname {
 export class HeaderComponent implements OnInit {
   editField: boolean = false;
   editDateField: boolean = false;
+  editBioField: boolean = false;
 
   editNameButton: string = 'Edit';
   editDateButton: string = 'Edit';
+  editBioButton: string = 'Edit';
 
   isEditSelected: boolean = false;
   isEditDateSelected: boolean = false;
+  isEditBioSelected: boolean = false;
 
-  @Input('firstName')
-  firstName: string = '';
 
-  @Input('lastName')
-  lastName: string = '';
 
-  @Input('birthday')
-  birthday: string;
+  @Input('firstName') firstName: string = '';
 
-  @ViewChild('firstNameRef')
-  firstNameControl!: ElementRef<HTMLInputElement>;
+  @Input('lastName') lastName: string = '';
 
-  @ViewChild('lastNameRef')
-  lastNameControl!: ElementRef<HTMLInputElement>;
+  @Input('birthday') birthday: string;
 
-  @ViewChild('birthdayRef')
-  birthdayControl!: ElementRef<HTMLInputElement>;
+  @Input('bio') bio: string = '';
 
-  @Output()
-  addedItem: EventEmitter<NameSurname>;
+  @ViewChild('firstNameRef') firstNameControl!: ElementRef<HTMLInputElement>;
 
-  @Output()
-  addedBirthday: EventEmitter<string>;
+  @ViewChild('lastNameRef') lastNameControl!: ElementRef<HTMLInputElement>;
+
+  @ViewChild('birthdayRef') birthdayControl!: ElementRef<HTMLInputElement>;
+
+  @ViewChild('bioRef') bioControl!: ElementRef<HTMLTextAreaElement>;
+
+  @Output() addedItem: EventEmitter<NameSurname>;
+
+  @Output() addedBirthday: EventEmitter<string>;
+
+  @Output() addedBio: EventEmitter<string>;
+
 
   constructor() {
     this.birthday = new Date('').toDateString();
 
     this.addedItem = new EventEmitter<NameSurname>();
     this.addedBirthday = new EventEmitter<string>();
+    this.addedBio = new EventEmitter<string>();
   }
 
+  addBio(event: any){
+    this.editBioField = !this.editBioField;
+    this.isEditBioSelected = !this.isEditBioSelected;
+    this.isEditBioSelected
+      ? (this.editBioButton = 'Save')
+      : (this.editBioButton = 'Edit');
+    event.preventDefault();
+    const bio = this.bioControl.nativeElement.value;
 
+    if(bio) {
+      this.bioControl.nativeElement.value = '';
+      this.addedBio.emit(bio);
+    }
+  }
 
   addBirthday(event: any) {
     this.editDateField = !this.editDateField;
@@ -72,7 +90,7 @@ export class HeaderComponent implements OnInit {
     const birthday: string = this.birthdayControl.nativeElement.value;
 
     if (birthday) {
-      console.log(birthday);
+      
       this.birthdayControl.nativeElement.value = '';
 
       this.addedBirthday.emit(birthday);

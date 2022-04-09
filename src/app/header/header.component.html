@@ -22,16 +22,19 @@
                 <p *ngIf="!editDateField"> Birthday: <span appHighlight>{{birthday | date}}</span> </p>
                 <div *ngIf="editDateField">
                     <input type="date" class="form-control" id="birthdayControl" #birthdayRef>
-                    
+
                 </div><button type="button" class="btn btn-outline-light btn-sm"
-                        (click)="addBirthday($event)">{{editDateButton}}</button>
+                    (click)="addBirthday($event)">{{editDateButton}}</button>
             </div>
         </div>
     </div>
     <div class="instaBio d-flex justify-content-around align-items-center">
-        <p>
-            Bringing you closer to the people and things you love.❤</p>
-        <textarea type="text" class="form-control" hidden></textarea>
-        <button type="button" class="btn btn-outline-light btn-sm">Edit</button>
+        <p for="bioControl" *ngIf="!editBioField">{{bio}}</p>
+        <div *ngIf="editBioField">
+            <textarea id="bioControl" type="text" class="form-control" rows="4" cols="50" #bioRef></textarea>
+        </div>
+        <button  type="button" class="btn btn-outline-light btn-sm"
+            (click)="addBio($event)">{{editBioButton}}</button>
     </div>
 </div>
+

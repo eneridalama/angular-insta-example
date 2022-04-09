@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -6,7 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  title = 'Ushtrim';
+  title = 'Insta Replica';
+
+  colorMode: string = 'Light Mode'
 
   followingName: string = 'Following';
   followersName: string = 'Followers';
@@ -28,7 +30,9 @@ export class AppComponent {
 
   fName: string = '';
   lName: string = '';
-  
+
+  bioInput: string = '';
+  bioItem: string = 'Bringing you closer to the people and things you love.❤';
 
   logUsername(event: any) {
     const { firstName, lastName } = event;
@@ -45,5 +49,12 @@ export class AppComponent {
     this.inputBirthdayDate = '';
     this.itemBirthdayDate = birthday;
   }
+
+  logBio(event:any){
+    const bio = event;
+    this.bioInput = '';
+    this.bioItem = bio;
+  }
+
 
 }

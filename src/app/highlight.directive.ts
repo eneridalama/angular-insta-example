@@ -11,13 +11,15 @@ export class HighlightDirective {
       const birthdate: Date = new Date(value);
       const age: number = Math.abs(Date.now()) - birthdate.getFullYear();
       const style: any = this.el.nativeElement.style;
-
       if(age > 18){
-        this.el.nativeElement.style.backgroundColor = 'red';
+        style.backgroundColor = 'red';
       }
     }
   }
 
-  constructor(private el: ElementRef) { }
+  constructor(private el: ElementRef) { 
+    
+    // this.el.nativeElement.style.backgroundColor = 'red';
+  }
 
 }

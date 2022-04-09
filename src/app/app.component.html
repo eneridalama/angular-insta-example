@@ -1,3 +1,4 @@
+
 <div class="container border">
   <app-header [firstName]="fName" 
   [lastName]="lName" 
@@ -5,8 +6,11 @@
   [lastName]="itemLastName" 
   [birthday]="birthdayDate"
   [birthday]="itemBirthdayDate"
+  [bio]="bioInput"
+  [bio]="bioItem"
   (addedItem)="logUsername($event)"
   (addedBirthday)="logBirthday($event)"
+  (addedBio)="logBio($event)"
   ></app-header>
   <hr>
   <div class="d-flex justify-content-around">

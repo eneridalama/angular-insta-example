@@ -13,8 +13,7 @@ import { HighlightDirective } from './highlight.directive';
     HeaderComponent,
     FollowInfoComponent,
     FollowPipePipe,
-    HighlightDirective,
-  
+    HighlightDirective,  
   ],
   imports: [
     BrowserModule
